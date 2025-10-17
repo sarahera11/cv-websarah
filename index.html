@@ -1,0 +1,910 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sarah Herawati - Portfolio</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', 'Segoe UI', sans-serif;
+      background: #0a0a0a;
+      color: #fff;
+      overflow-x: hidden;
+    }
+
+    .container {
+      display: flex;
+      min-height: 100vh;
+    }
+
+    /* Left Column - Personal Info */
+    .left-column {
+      width: 30%;
+      background: linear-gradient(180deg, #1a1a1a 0%, #2d2d2d 100%);
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: fixed;
+      top: 0;
+      left: 0;
+      height: 100vh;
+      overflow-y: auto;
+      border-right: 1px solid rgba(255, 255, 255, 0.1);
+      z-index: 10;
+    }
+
+    .profile-img {
+      width: 180px;
+      height: 180px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 4px solid #fff;
+      margin-bottom: 20px;
+      box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+    }
+
+    .profile-name {
+      font-size: 28px;
+      font-weight: 700;
+      margin-bottom: 5px;
+      color: #fff;
+    }
+
+    .profile-title {
+      font-size: 18px;
+      color: #e0e0e0;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    .contact-info {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      margin-bottom: 15px;
+      color: #e0e0e0;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .contact-item:hover {
+      color: #fff;
+      transform: translateX(5px);
+    }
+
+    .contact-item i {
+      color: #fff;
+      width: 20px;
+      margin-right: 15px;
+    }
+
+    /* Right Column - Content */
+    .right-column {
+      width: 70%;
+      background: linear-gradient(135deg, #1a1a1a 0%, #f5f5f5 100%);
+      padding: 40px;
+      overflow-y: auto;
+      margin-left: 30%;
+      min-height: 100vh;
+    }
+
+    .section {
+      margin-bottom: 40px;
+      background: rgba(255, 255, 255, 0.9);
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 20px;
+      padding-bottom: 10px;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+    }
+
+    .section-title i {
+      margin-right: 10px;
+      font-size: 20px;
+      color: #1a1a1a;
+    }
+
+    .section-content {
+      color: #333;
+      line-height: 1.6;
+    }
+
+    .timeline-item {
+      margin-bottom: 20px;
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 8px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #1a1a1a;
+    }
+
+    .timeline-title {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #1a1a1a;
+    }
+
+    .timeline-date {
+      font-size: 14px;
+      color: #555;
+      margin-bottom: 5px;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: #444;
+    }
+
+    .skills-container {
+      margin-top: 20px;
+    }
+
+    .skills-category {
+      margin-bottom: 25px;
+    }
+
+    .skills-category-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+    }
+
+    .skills-category-title i {
+      margin-right: 10px;
+      color: #1a1a1a;
+    }
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .skill-item {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      transition: all 0.3s;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .skill-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .skill-name {
+      font-weight: 600;
+      margin-bottom: 5px;
+      color: #1a1a1a;
+    }
+
+    .skill-level {
+      font-size: 14px;
+      color: #555;
+    }
+
+    .hobbies-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .hobby-item {
+      background: #fff;
+      padding: 12px 20px;
+      border-radius: 30px;
+      display: flex;
+      align-items: center;
+      transition: all 0.3s;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+      color: #333;
+    }
+
+    .hobby-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .hobby-item i {
+      color: #1a1a1a;
+      margin-right: 10px;
+    }
+
+    /* Language Section */
+    .languages-container {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 15px;
+    }
+
+    .language-item {
+      background: #fff;
+      padding: 15px;
+      border-radius: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: all 0.3s;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+      box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+    }
+
+    .language-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+    }
+
+    .language-name {
+      font-weight: 600;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+    }
+
+    .language-name i {
+      margin-right: 10px;
+      color: #1a1a1a;
+    }
+
+    .language-level {
+      font-size: 14px;
+      color: #555;
+      background: rgba(0, 0, 0, 0.05);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+
+    /* Portfolio Section */
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+
+    .portfolio-item {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.3s;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+      border: 1px solid rgba(0, 0, 0, 0.05);
+    }
+
+    .portfolio-item:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    .portfolio-img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    .portfolio-img:hover {
+      transform: scale(1.05);
+    }
+
+    .portfolio-content {
+      padding: 20px;
+    }
+
+    .portfolio-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+      display: flex;
+      align-items: center;
+    }
+
+    .portfolio-title i {
+      margin-right: 10px;
+      color: #1a1a1a;
+    }
+
+    .portfolio-desc {
+      font-size: 14px;
+      color: #444;
+      margin-bottom: 15px;
+    }
+
+    .portfolio-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .tech-tag {
+      background: rgba(0, 0, 0, 0.05);
+      color: #333;
+      padding: 4px 10px;
+      border-radius: 20px;
+      font-size: 12px;
+      border: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .portfolio-details {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .portfolio-details-content {
+      background: #fff;
+      border-radius: 12px;
+      max-width: 800px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      position: relative;
+    }
+
+    .portfolio-details-close {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      font-size: 24px;
+      color: #1a1a1a;
+      cursor: pointer;
+      z-index: 1001;
+    }
+
+    .portfolio-details-img {
+      width: 100%;
+      height: 300px;
+      object-fit: cover;
+    }
+
+    .portfolio-details-body {
+      padding: 25px;
+    }
+
+    .portfolio-details-title {
+      font-size: 24px;
+      font-weight: 700;
+      margin-bottom: 15px;
+      color: #1a1a1a;
+    }
+
+    .portfolio-details-desc {
+      font-size: 16px;
+      color: #333;
+      margin-bottom: 20px;
+      line-height: 1.6;
+    }
+
+    .portfolio-details-tech {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 20px;
+    }
+
+    .portfolio-details-info {
+      background: rgba(0, 0, 0, 0.05);
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+    }
+
+    .portfolio-details-info h4 {
+      font-size: 18px;
+      margin-bottom: 10px;
+      color: #1a1a1a;
+    }
+
+    .portfolio-details-info p {
+      margin-bottom: 8px;
+      color: #333;
+    }
+
+    /* Responsive */
+    @media (max-width: 992px) {
+      .left-column {
+        position: relative;
+        width: 100%;
+        height: auto;
+        border-right: none;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      
+      .right-column {
+        width: 100%;
+        margin-left: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      
+      .left-column {
+        width: 100%;
+        padding: 30px 20px;
+      }
+      
+      .right-column {
+        width: 100%;
+        padding: 30px 20px;
+        margin-left: 0;
+      }
+      
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .left-column {
+        padding: 20px 15px;
+      }
+      
+      .right-column {
+        padding: 20px 15px;
+      }
+      
+      .profile-img {
+        width: 150px;
+        height: 150px;
+      }
+      
+      .profile-name {
+        font-size: 24px;
+      }
+      
+      .profile-title {
+        font-size: 16px;
+      }
+      
+      .section {
+        padding: 20px 15px;
+      }
+      
+      .section-title {
+        font-size: 20px;
+      }
+      
+      .portfolio-details-content {
+        margin: 10px;
+      }
+      
+      .portfolio-details-body {
+        padding: 20px 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <!-- Left Column - Personal Info -->
+    <div class="left-column">
+      <img src="assets/pap_sarah.png" alt="Sarah Herawati" class="profile-img" />
+      <h1 class="profile-name">Sarah Herawati</h1>
+      <p class="profile-title">Web Developer</p>
+      
+      <div class="contact-info">
+        <a href="https://github.com/sarahera11" target="_blank" class="contact-item">
+          <i class="fab fa-github"></i>
+          <span>sarahera11</span>
+        </a>
+        <a href="mailto:sarahherawati497@gmail.com" class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <span>sarahherawati497@gmail.com</span>
+        </a>
+        <a href="tel:+6281564677640" class="contact-item">
+          <i class="fas fa-phone"></i>
+          <span>+62 815 6467 7640</span>
+        </a>
+        <a href="https://instagram.com/srhhrwww" target="_blank" class="contact-item">
+          <i class="fab fa-instagram"></i>
+          <span>@srhhrwww</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- Right Column - Content -->
+    <div class="right-column">
+      <!-- Profil Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="fas fa-user"></i> Profil
+        </h2>
+        <div class="section-content">
+          <p>Saya adalah individu yang memiliki semangat tinggi dalam bidang pemrograman dan desain. Saya senang mempelajari hal-hal baru, berdisiplin, serta memiliki rasa tanggung jawab yang kuat. Saya mampu bekerja dengan baik secara individu maupun dalam tim, dan selalu berupaya mengembangkan keterampilan untuk memberikan kontribusi nyata di dunia kerja.</p>
+          
+          <div style="margin-top: 20px;">
+            <p><strong>Nama:</strong> Sarah Herawati</p>
+            <p><strong>Tempat, Tanggal lahir:</strong> Ciamis, 04 Agustus 2007</p>
+            <p><strong>Jenis kelamin:</strong> Perempuan</p>
+            <p><strong>Alamat:</strong> Dsn.Sindanggirang Ds.Citeureup Kec.Kawali Kab.Ciamis</p>
+            <p><strong>Agama:</strong> Islam</p>
+            <p><strong>Kewarganegaraan:</strong> WNI</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Hobi Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="fas fa-heart"></i> Hobi
+        </h2>
+        <div class="section-content">
+          <div class="hobbies-container">
+            <div class="hobby-item">
+              <i class="fas fa-utensils"></i>
+              <span>Memasak</span>
+            </div>
+            <div class="hobby-item">
+              <i class="fas fa-shuttle-van"></i>
+              <span>Badminton</span>
+            </div>
+            <div class="hobby-item">
+              <i class="fas fa-fish"></i>
+              <span>Memancing</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pendidikan Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="fas fa-graduation-cap"></i> Pendidikan
+        </h2>
+        <div class="section-content">
+          <div class="timeline-item">
+            <div class="timeline-title">SMKN 1 Kawali</div>
+            <div class="timeline-date">2023 - 2026</div>
+            <div class="timeline-desc">Rekayasa Perangkat Lunak</div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-title">MTsN 2 Ciamis</div>
+            <div class="timeline-date">2020 - 2023</div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-title">MIS Sindanggirang</div>
+            <div class="timeline-date">2015 - 2020</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kemampuan Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="fas fa-laptop-code"></i> Kemampuan
+        </h2>
+        <div class="section-content">
+          <div class="skills-container">
+            <div class="skills-category">
+              <h3 class="skills-category-title">
+                <i class="fas fa-code"></i> Hard Skills
+              </h3>
+              <div class="skills-grid">
+                <div class="skill-item">
+                  <div class="skill-name">Desain Canva</div>
+                  <div class="skill-level">Menengah</div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-name">Figma</div>
+                  <div class="skill-level">Menengah</div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-name">Videografi</div>
+                  <div class="skill-level">Menengah</div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-name">MS Office</div>
+                  <div class="skill-level">Menengah</div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="skills-category">
+              <h3 class="skills-category-title">
+                <i class="fas fa-users"></i> Soft Skills
+              </h3>
+              <div class="skills-grid">
+                <div class="skill-item">
+                  <div class="skill-name">Kerja Sama Tim</div>
+                  <div class="skill-level">Menengah</div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-name">Kreatif</div>
+                  <div class="skill-level">Menengah</div>
+                </div>
+                <div class="skill-item">
+                  <div class="skill-name">Komunikasi</div>
+                  <div class="skill-level">Menengah</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Portfolio Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="fas fa-folder-open"></i> Portfolio
+        </h2>
+        <div class="section-content">
+          <div class="portfolio-grid">
+            <div class="portfolio-item">
+              <img src="assets/data_siswa.png" alt="Website Data Siswa" class="portfolio-img" onclick="openPortfolioDetails('dataSiswa')" />
+              <div class="portfolio-content">
+                <h3 class="portfolio-title">
+                  <i class="fas fa-database"></i> Website Data Siswa
+                </h3>
+                <p class="portfolio-desc">Mengembangkan sistem manajemen data siswa berbasis web yang memungkinkan pengguna untuk menambah, mengedit, menampilkan, dan menghapus data siswa (CRUD) dengan mudah.</p>
+                <div class="portfolio-tech">
+                  <span class="tech-tag">HTML</span>
+                  <span class="tech-tag">CSS</span>
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">MySQL</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="portfolio-item">
+              <img src="assets/sewa_motor.png" alt="Aplikasi Kasir" class="portfolio-img" onclick="openPortfolioDetails('kasirMotor')" />
+              <div class="portfolio-content">
+                <h3 class="portfolio-title">
+                  <i class="fas fa-cash-register"></i> Aplikasi Kasir Rental Motor
+                </h3>
+                <p class="portfolio-desc">Mengembangkan aplikasi kasir untuk penyewaan motor dengan fitur transaksi dan laporan keuangan</p>
+                <div class="portfolio-tech">
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">PHP</span>
+                  <span class="tech-tag">Laravel</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="portfolio-item">
+              <img src="assets/figma.png" alt="Web Development" class="portfolio-img" onclick="openPortfolioDetails('webDev')" />
+              <div class="portfolio-content">
+                <h3 class="portfolio-title">
+                  <i class="fas fa-globe"></i> Web Development
+                </h3>
+                <p class="portfolio-desc">Pengembangan berbagai website dengan fokus pada user experience dan responsive design.</p>
+                <div class="portfolio-tech">
+                  <span class="tech-tag">HTML</span>
+                  <span class="tech-tag">CSS</span>
+                  <span class="tech-tag">JavaScript</span>
+                  <span class="tech-tag">Bootstrap</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pengalaman Organisasi Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="fas fa-users"></i> Pengalaman Organisasi
+        </h2>
+        <div class="section-content">
+          <div class="timeline-item">
+            <div class="timeline-title">PMR MTsN 2 Ciamis</div>
+            <div class="timeline-date">2021 - 2023</div>
+            <div class="timeline-desc">Ketua - Memimpin kegiatan PMR dan koordinasi tim</div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-title">OSIS MTsN 2 Ciamis</div>
+            <div class="timeline-date">2021 - 2023</div>
+            <div class="timeline-desc">Anggota - Aktif dalam kegiatan sekolah</div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-title">Dewan Penggalang MTsN 2 Ciamis</div>
+            <div class="timeline-date">2021 - 2023</div>
+            <div class="timeline-desc">Anggota - Kegiatan pramuka dan kepemimpinan</div>
+          </div>
+          
+          <div class="timeline-item">
+            <div class="timeline-title">IRMAS DKM As-Salam</div>
+            <div class="timeline-date">2021 - 2023</div>
+            <div class="timeline-desc">Anggota - Kegiatan keagamaan</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bahasa Section -->
+      <div class="section">
+        <h2 class="section-title">
+          <i class="fas fa-language"></i> Bahasa
+        </h2>
+        <div class="section-content">
+          <div class="languages-container">
+            <div class="language-item">
+              <div class="language-name">
+                <i class="fas fa-flag"></i> Bahasa Indonesia
+              </div>
+              <div class="language-level">Aktif</div>
+            </div>
+            <div class="language-item">
+              <div class="language-name">
+                <i class="fas fa-flag"></i> Bahasa Sunda
+              </div>
+              <div class="language-level">Aktif</div>
+            </div>
+            <div class="language-item">
+              <div class="language-name">
+                <i class="fas fa-flag"></i> English
+              </div>
+              <div class="language-level">Menengah</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Portfolio Details Modal -->
+  <div id="portfolioDetails" class="portfolio-details">
+    <div class="portfolio-details-content">
+      <span class="portfolio-details-close" onclick="closePortfolioDetails()">&times;</span>
+      <img id="detailsImg" src="" alt="" class="portfolio-details-img" />
+      <div class="portfolio-details-body">
+        <h2 id="detailsTitle" class="portfolio-details-title"></h2>
+        <p id="detailsDesc" class="portfolio-details-desc"></p>
+        <div id="detailsTech" class="portfolio-details-tech"></div>
+        <div class="portfolio-details-info">
+          <h4>Detail Proyek</h4>
+          <div id="detailsInfo"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Portfolio Details Data
+    const portfolioData = {
+      dataSiswa: {
+        title: "Website Data Siswa",
+        img: "assets/data_siswa.png",
+        desc: "Mengembangkan sistem manajemen data siswa berbasis web yang memungkinkan pengguna untuk menambah, mengedit, menampilkan, dan menghapus data siswa (CRUD) dengan mudah.",
+        tech: ["HTML", "CSS", "PHP", "MySQL"],
+        info: {
+          "Tahun Pengembangan": "2025",
+          "Peran": "Full Stack Developer",
+          "Klien": "Tugas Sekolah",
+          "Fitur Utama": "CRUD Data Siswa, Sistem Login, Export Data ke Excel",
+          "Tantangan": "Mengimplementasikan sistem keamanan untuk data siswa dan membuat interface yang user-friendly"
+        }
+      },
+      kasirMotor: {
+        title: "Aplikasi Kasir Rental Motor",
+        img: "assets/sewa_motor.png",
+        desc: "Mengembangkan aplikasi kasir untuk penyewaan motor dengan fitur transaksi dan laporan keuangan",
+        tech: ["JavaScript", "PHP", "Laravel"],
+        info: {
+          "Tahun Pengembangan": "2025",
+          "Peran": "Full Stack Developer",
+          "Klien": "Usaha Rental Motor Lokal",
+          "Fitur Utama": "Manajemen Inventaris, Transaksi Penyewaan, Laporan Keuangan, Nota Digital",
+          "Tantangan": "Menghitung biaya sewa berdasarkan durasi dan membuat sistem yang mudah digunakan oleh pemilik usaha"
+        }
+      },
+      webDev: {
+        title: "Web Development",
+        img: "assets/figma.png",
+        desc: "Pengembangan berbagai website dengan fokus pada user experience dan responsive design.",
+        tech: ["HTML", "CSS", "JavaScript", "Bootstrap"],
+        info: {
+          "Tahun Pengembangan": "2023",
+          "Peran": "Frontend Developer",
+          "Klien": "Berbagai Proyek Pribadi",
+          "Fitur Utama": "Responsive Design, User Experience Optimization, SEO Friendly",
+          "Tantangan": "Membuat desain yang menarik namun tetap fungsional di berbagai ukuran layar"
+        }
+      }
+    };
+
+    function openPortfolioDetails(projectId) {
+      const project = portfolioData[projectId];
+      if (!project) return;
+      
+      document.getElementById('detailsImg').src = project.img;
+      document.getElementById('detailsImg').alt = project.title;
+      document.getElementById('detailsTitle').textContent = project.title;
+      document.getElementById('detailsDesc').textContent = project.desc;
+      
+      // Clear and add tech tags
+      const techContainer = document.getElementById('detailsTech');
+      techContainer.innerHTML = '';
+      project.tech.forEach(tech => {
+        const tag = document.createElement('span');
+        tag.className = 'tech-tag';
+        tag.textContent = tech;
+        techContainer.appendChild(tag);
+      });
+      
+      // Clear and add project info
+      const infoContainer = document.getElementById('detailsInfo');
+      infoContainer.innerHTML = '';
+      for (const [key, value] of Object.entries(project.info)) {
+        const p = document.createElement('p');
+        p.innerHTML = `<strong>${key}:</strong> ${value}`;
+        infoContainer.appendChild(p);
+      }
+      
+      document.getElementById('portfolioDetails').style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePortfolioDetails() {
+      document.getElementById('portfolioDetails').style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+
+    // Close modal when clicking outside of it
+    window.onclick = function(event) {
+      const modal = document.getElementById('portfolioDetails');
+      if (event.target === modal) {
+        closePortfolioDetails();
+      }
+    }
+  </script>
+</body>
+</html>

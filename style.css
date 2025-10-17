@@ -1,0 +1,98 @@
+body {
+  margin: 0;
+  font-family: "Poppins", sans-serif;
+  background: #ffffff;
+  color: #222;
+}
+
+.container {
+  display: flex;
+  min-height: 100vh;
+}
+
+/* KIRI */
+.left {
+  background: #2d6a4f;
+  color: white;
+  width: 35%;
+  text-align: center;
+  padding: 2rem 1rem;
+}
+
+.profile-pic {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid white;
+  margin-bottom: 1rem;
+}
+
+.left h1 {
+  margin: 0.5rem 0 0;
+}
+
+.left h2 {
+  margin: 0;
+  font-weight: 400;
+}
+
+.contact-info {
+  text-align: left;
+  margin-top: 1.5rem;
+}
+
+.contact-info p {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+}
+
+.section {
+  margin-top: 2rem;
+}
+
+.section ul {
+  list-style: none;
+  padding: 0;
+}
+
+.section li {
+  margin: 0.4rem 0;
+}
+
+/* KANAN */
+.right {
+  background: #d8f3dc;
+  flex: 1;
+  padding: 2rem 3rem;
+}
+
+.right section {
+  margin-bottom: 2rem;
+}
+
+.right h3 {
+  color: #1b4332;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.skills span {
+  display: inline-block;
+  background: #40916c;
+  color: white;
+  padding: 0.4rem 0.8rem;
+  border-radius: 8px;
+  margin: 0.3rem;
+  font-size: 0.9rem;
+}
+
+/* FOOTER */
+footer {
+  text-align: center;
+  padding: 1rem;
+  background: #1b4332;
+  color: white;
+  font-size: 0.85rem;
+}
